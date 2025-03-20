@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, useAnimation } from "framer-motion";
+import { motion, useMotionValue, useSpring } from "framer-motion";
 import { Home, User, Smile, Calendar } from "lucide-react";
 import Image from "next/image";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 // Stats Data
 const stats = [
@@ -15,11 +15,19 @@ const stats = [
 
 // Counter Animation Function
 const Counter = ({ value }: { value: number }) => {
-  const controls = useAnimation();
+  const motionValue = useMotionValue(0);
+  const animatedValue = useSpring(motionValue, { duration: 2 });
+
+  const [displayValue, setDisplayValue] = useState(0);
 
   useEffect(() => {
-    controls.start({ count: value, transition: { duration: 2, ease: "easeOut" } });
-  }, [value, controls]);
+    motionValue.set(value);
+    const unsubscribe = animatedValue.on("change", (latest) => {
+      setDisplayValue(Math.round(latest)); // Ensure whole numbers
+    });
+
+    return () => unsubscribe();
+  }, [value, motionValue, animatedValue]);
 
   return (
     <motion.span
@@ -28,7 +36,7 @@ const Counter = ({ value }: { value: number }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-      <motion.span animate={controls}>{value.toLocaleString()}</motion.span>
+      {displayValue.toLocaleString()}
     </motion.span>
   );
 };
