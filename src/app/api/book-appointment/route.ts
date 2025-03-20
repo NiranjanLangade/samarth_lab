@@ -51,12 +51,19 @@ export async function POST(request: NextRequest) {
             timeSlot,
         });
 
-        // Send SMS notification to the doctor
-        await client.messages.create({
-            from: process.env.TWILIO_SMS_NUMBER,  // Twilio SMS number
-            to: process.env.DOCTOR_PHONE_NUMBER, // Doctor's mobile number
-            body: `📅 New Appointment Booked!\n👤 Name: ${name}\n📞 Mobile: ${mobile}\n📆 Date: ${date}\n🕒 Time Slot: ${timeSlot}`
-        });
+        const fromNumber = process.env.TWILIO_SMS_NUMBER;
+const doctorNumber = process.env.DOCTOR_PHONE_NUMBER;
+
+if (!fromNumber || !doctorNumber) {
+    throw new Error("Twilio environment variables are missing!");
+}
+
+await client.messages.create({
+    from: fromNumber,
+    to: doctorNumber,
+    body: `📅 New Appointment Booked!\n👤 Name: ${name}\n📞 Mobile: ${mobile}\n📆 Date: ${date}\n🕒 Time Slot: ${timeSlot}`
+});
+
 
         return NextResponse.json(
             { success: true, message: 'Appointment booked successfully, and doctor notified via SMS', appointment: newAppointment },
