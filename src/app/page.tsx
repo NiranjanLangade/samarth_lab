@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Navbar } from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Card, CardContent } from "@/components/ui/card";
+// import { Card, CardContent } from "@/components/ui/card";
 import FeatureSection from "@/components/FeatureSection";
 import AnimatedStats from "@/components/AnimatedStats";
 import WhoWeAre from "@/components/WhoWeAre";

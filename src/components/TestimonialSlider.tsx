@@ -13,22 +13,22 @@ const testimonials = [
   },
   {
     name: "Shakil Hossain",
-    image: "/doctor2.jpg",
+    image: "/doctor1.jpg",
     text: "Lorem ipsum dolor sit amet consectetur eliet adipiscing. Aliquam nec suscipit turpis, vel pretium eros.",
   },
   {
     name: "Naimur Rahman",
-    image: "/doctor3.jpg",
+    image: "/doctor1.jpg",
     text: "Lorem ipsum dolor sit amet consectetur eliet adipiscing. Aliquam nec suscipit turpis, vel pretium eros.",
   },
   {
     name: "Naimur Rahman",
-    image: "/doctor3.jpg",
+    image: "/doctor1.jpg",
     text: "Lorem ipsum dolor sit amet consectetur eliet adipiscing. Aliquam nec suscipit turpis, vel pretium eros.",
   },
   {
     name: "Naimur Rahman",
-    image: "/doctor3.jpg",
+    image: "/doctor1.jpg",
     text: "Lorem ipsum dolor sit amet consectetur eliet adipiscing. Aliquam nec suscipit turpis, vel pretium eros.",
   },
 ];
