@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
@@ -13,36 +13,19 @@ interface AppointmentForm {
 }
 
 const AppointmentForm = () => {
-  const { register, handleSubmit, formState: { errors }, reset, watch } = useForm<AppointmentForm>();
+  const { register, handleSubmit, formState: { errors }, reset } = useForm<AppointmentForm>();
   const [loading, setLoading] = useState(false);
-  const [availableSlots, setAvailableSlots] = useState<string[]>([]);
-  const [slotsLoading, setSlotsLoading] = useState(false);
 
-  const selectedDate = watch("date");
-
-  // Fetch available slots when a date is selected
-  useEffect(() => {
-    if (!selectedDate) return;
-
-    const fetchAvailableSlots = async () => {
-      setSlotsLoading(true);
-      try {
-        const response = await fetch(`/api/available-slots?date=${selectedDate}`);
-        const result = await response.json();
-        if (result.success) {
-          setAvailableSlots(result.availableSlots);
-        } else {
-          toast.error(result.message || "Failed to load slots");
-        }
-      } catch (error) {
-        console.error("Error fetching slots:", error);
-        toast.error("Something went wrong!");
-      }
-      setSlotsLoading(false);
-    };
-
-    fetchAvailableSlots();
-  }, [selectedDate]);
+  // Define static time slots
+  const timeSlots = [
+    "09:00 AM - 10:00 AM",
+    "10:00 AM - 11:00 AM",
+    "11:00 AM - 12:00 PM",
+    "01:00 PM - 02:00 PM",
+    "02:00 PM - 03:00 PM",
+    "03:00 PM - 04:00 PM",
+    "04:00 PM - 05:00 PM",
+  ];
 
   const onSubmit = async (data: AppointmentForm) => {
     setLoading(true);
@@ -68,7 +51,7 @@ const AppointmentForm = () => {
   };
 
   return (
-    <section className=" py-12">
+    <section className="py-12">
       <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg p-8">
         <h2 className="text-2xl font-semibold text-center mb-6">Book an Appointment</h2>
 
@@ -120,28 +103,21 @@ const AppointmentForm = () => {
           </div>
 
           {/* Time Slot */}
-          <div className="col-span-2">
+          <div>
             <select
               {...register("timeSlot", { required: "Please select a time slot" })}
               className="w-full border border-gray-300 rounded-lg px-4 py-2"
-              disabled={!selectedDate || slotsLoading || availableSlots.length === 0}
             >
               <option value="">Select Time Slot</option>
-              {slotsLoading ? (
-                <option disabled>Loading slots...</option>
-              ) : availableSlots.length > 0 ? (
-                availableSlots.map((slot) => (
-                  <option key={slot} value={slot}>{slot}</option>
-                ))
-              ) : (
-                <option disabled>No slots available</option>
-              )}
+              {timeSlots.map((slot) => (
+                <option key={slot} value={slot}>{slot}</option>
+              ))}
             </select>
             {errors.timeSlot && <p className="text-red-500 text-sm">{errors.timeSlot.message}</p>}
           </div>
 
           {/* Submit Button */}
-          <div className="col-span-2">
+          <div>
             <button type="submit" className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition" disabled={loading}>
               {loading ? "Booking..." : "Book Appointment"}
             </button>

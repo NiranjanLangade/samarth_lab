@@ -8,7 +8,6 @@ const ALL_SLOTS = [
 ];
 
 export async function GET(request: NextRequest) {
-    console.log("📢 API Hit: /api/available-slots");
     await dbConnect();
 
     try {
