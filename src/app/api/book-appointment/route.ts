@@ -52,7 +52,7 @@ export async function POST(request: NextRequest) {
         });
 
         const fromNumber = process.env.TWILIO_SMS_NUMBER;
-const doctorNumber = process.env.DOCTOR_PHONE_NUMBER;
+        const doctorNumber = process.env.DOCTOR_PHONE_NUMBER;
 
 if (!fromNumber || !doctorNumber) {
     throw new Error("Twilio environment variables are missing!");
