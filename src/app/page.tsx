@@ -1,7 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { Navbar } from "@/components/Navbar";
-import Footer from "@/components/Footer";
-// import { Card, CardContent } from "@/components/ui/card";
 import FeatureSection from "@/components/FeatureSection";
 import AnimatedStats from "@/components/AnimatedStats";
 import WhoWeAre from "@/components/WhoWeAre";
@@ -13,7 +10,7 @@ import BookAppointment from "@/components/BookAppointment";
 export default function Home() {
   return (
     <div className="bg-gray-50 text-gray-900">
-      <Navbar />
+
 
       {/* Hero Section */}
       <section className="text-center py-20 px-6 bg-blue-100">
@@ -44,8 +41,7 @@ export default function Home() {
       {/* Book Appointment */}
       <BookAppointment/>
 
-      {/* Footer */}
-      <Footer />
+
     </div>
   );
 }
