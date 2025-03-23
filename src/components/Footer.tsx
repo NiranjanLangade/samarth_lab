@@ -1,6 +1,6 @@
 "use client";
 
-import { FaFacebookF, FaGoogle, FaTwitter, FaVimeoV, FaPinterestP, FaPaperPlane } from "react-icons/fa";
+import { FaFacebookF, FaTwitter, FaInstagram, FaYoutube, FaPaperPlane } from "react-icons/fa";
 
 const Footer = () => {
   return (
@@ -16,11 +16,10 @@ const Footer = () => {
           </p>
           <div className="flex gap-3 mt-4">
             {[
+              { icon: <FaYoutube />, link: "#" },
+              { icon: <FaInstagram/>, link: "#" },
               { icon: <FaFacebookF />, link: "#" },
-              { icon: <FaGoogle />, link: "#" },
               { icon: <FaTwitter />, link: "#" },
-              { icon: <FaVimeoV />, link: "#" },
-              { icon: <FaPinterestP />, link: "#" },
             ].map((social, index) => (
               <a
                 key={index}

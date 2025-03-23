@@ -6,6 +6,7 @@ import MeetDoctor from "@/components/MeetDoctor";
 import TabsSection from "@/components/TabsSection";
 import TestimonialSlider from "@/components/TestimonialSlider";
 import BookAppointment from "@/components/BookAppointment";
+import Hero from "@/components/HeroSection";
 
 export default function Home() {
   return (
@@ -13,11 +14,13 @@ export default function Home() {
 
 
       {/* Hero Section */}
-      <section className="text-center py-20 px-6 bg-blue-100">
+      {/* <section className="text-center py-20 px-6 bg-blue-100">
         <h1 className="text-5xl font-bold">Seamless Doctor Appointments</h1>
         <p className="text-lg mt-4 text-gray-700">Book your doctor’s appointment with ease and convenience.</p>
         <Button className="mt-6">Book Appointment</Button>
-      </section>
+      </section> */}
+      <Hero/>
+
 
       {/* Meet Doctor */}
       <MeetDoctor/>

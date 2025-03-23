@@ -3,71 +3,49 @@
 import { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { FaHeartPulse, FaBrain, FaTooth, FaStethoscope, FaBone } from "react-icons/fa6";
+import { FaMicroscope, FaXRay } from "react-icons/fa6";
+import { GiMedicines } from "react-icons/gi";
 
 const services = [
   {
-    id: "cardiac",
-    title: "Cardiac Clinic",
-    description: "Specialized in heart-related diseases with expert cardiologists.",
-    quote: "“We provide the best cardiac care with advanced treatments.”",
+    id: "Electrohomeopathy",
+    title: "Electrohomeopathy",
+    description: "A holistic treatment system using plant-based remedies.",
+    quote: "“Providing natural healing with Electrohomeopathy.”",
     points: [
-      "Experienced heart specialists",
-      "State-of-the-art facilities",
-      "Personalized treatment plans",
+      "100% natural remedies",
+      "Non-invasive treatments",
+      "Safe and effective therapies",
     ],
     image: "/pf1.jpg",
-    icon: FaHeartPulse,
+    icon: GiMedicines,
   },
   {
-    id: "neurology",
-    title: "Neurology",
-    description: "Advanced care for brain and nervous system disorders.",
-    quote: "“Leading neurology department for stroke and epilepsy treatment.”",
+    id: "Pathology",
+    title: "Pathology",
+    description: "Comprehensive diagnostic lab tests with accurate results.",
+    quote: "“Ensuring precise and reliable diagnostic services.”",
     points: [
-      "Expert neurologists",
-      "Modern diagnostic technology",
-      "Comprehensive rehabilitation programs",
+      "Advanced lab equipment",
+      "Experienced pathologists",
+      "Quick and accurate reports",
     ],
     image: "/pf2.jpg",
-    icon: FaBrain,
+    icon: FaMicroscope,
   },
   {
-    id: "dentistry",
-    title: "Dentistry",
-    description: "Top-notch dental care with pain-free treatment options.",
-    quote: "“Your smile is our priority! Trusted dental experts at your service.”",
-    points: ["Painless treatments", "Modern equipment", "Affordable services"],
+    id: "X-ray",
+    title: "X-ray",
+    description: "State-of-the-art imaging services for accurate diagnosis.",
+    quote: "“High-quality X-ray imaging for better health insights.”",
+    points: ["Modern radiology", "Detailed imaging", "Expert analysis"],
     image: "/pf3.jpg",
-    icon: FaTooth,
-  },
-  {
-    id: "gastroenterology",
-    title: "Gastroenterology",
-    description: "Expert care for digestive system disorders.",
-    quote: "“Advanced treatments for stomach and digestive diseases.”",
-    points: [
-      "Gastroenterology specialists",
-      "Endoscopy and colonoscopy services",
-      "Nutritional counseling",
-    ],
-    image: "/pf4.jpg",
-    icon: FaStethoscope,
-  },
-  {
-    id: "orthopedagogy",
-    title: "Orthopedagogy",
-    description: "Specialized treatments for bone and muscle disorders.",
-    quote: "“Leading orthopedagogy specialists for advanced rehabilitation.”",
-    points: ["Orthopedic surgeons", "Rehabilitation programs", "Physiotherapy"],
-    image: "/pf1.jpg",
-    icon: FaBone,
+    icon: FaXRay,
   },
 ];
 
 const TabsSection = () => {
-  const [activeTab, setActiveTab] = useState("cardiac");
-
+  const [activeTab, setActiveTab] = useState(services[0].id);
   const activeService = services.find((s) => s.id === activeTab);
 
   return (
@@ -93,7 +71,6 @@ const TabsSection = () => {
                   }`}
                 />
                 <span className="text-lg">{service.title}</span>
-                <span className="text-sm text-gray-400">Lorem Sit</span>
               </button>
             );
           })}
@@ -130,8 +107,8 @@ const TabsSection = () => {
               <Image
                 src={activeService.image}
                 alt={activeService.title}
-                layout="fill"
-                objectFit="cover"
+                fill
+                className="object-cover"
               />
             </div>
           </motion.div>

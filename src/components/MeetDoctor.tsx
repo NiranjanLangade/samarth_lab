@@ -43,13 +43,13 @@ const MeetDoctor = () => {
         <div className="relative w-72 h-72 shrink-0">
           {/* Doctor Image */}
           <div className="absolute inset-0 rounded-full overflow-hidden border-4 border-gray-300 shadow-xl">
-            <Image
-              src="/doctor.jpg"
-              alt="Doctor"
-              layout="fill"
-              objectFit="cover"
-              className="opacity-95"
-            />
+          <Image
+  src="/doctor.jpg"
+  fill // Instead of `layout="fill"`
+  style={{ objectFit: "cover" }} // Instead of `objectFit`
+  alt="Doctor"
+/>
+
           </div>
 
           {/* Experience Badge - Bottom Right Corner */}
