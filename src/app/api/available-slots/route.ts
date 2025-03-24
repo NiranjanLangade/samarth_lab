@@ -3,8 +3,9 @@ import dbConnect from '@/lib/dbConnect';
 import Appointment from '@/models/Appointment';
 
 const ALL_SLOTS = [
-    "09:00 AM", "10:00 AM", "11:00 AM", "12:00 PM",
-    "02:00 PM", "03:00 PM", "04:00 PM", "05:00 PM"
+    "09:00 AM", "09:30 AM", "10:00 AM", "10:30 AM", "11:00 AM", "11:30 AM", "12:00 PM", "12:30 PM", "1:00 PM",
+    "1:30 PM","02:00 PM","02:30 PM", "03:00 PM", "03:30 PM", "04:00 PM",  "04:30 PM", "05:00 PM", "05:30 PM",
+    "6:00 PM", "6:30 PM", "7:00 PM"
 ];
 
 export async function GET(request: NextRequest) {
