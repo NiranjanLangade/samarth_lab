@@ -5,9 +5,16 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
+import { usePathname } from "next/navigation";
 
 export function Navbar() {
   const [isOpen, setIsOpen] = React.useState(false);
+  const pathname = usePathname(); // Detects page change
+
+  // Close menu when the route changes
+  React.useEffect(() => {
+    setIsOpen(false);
+  }, [pathname]);
 
   return (
     <nav className="bg-white shadow-md py-4 px-6">
@@ -43,6 +50,7 @@ export function Navbar() {
             <Link
               key={item.href}
               href={item.href}
+              onClick={() => setIsOpen(false)} // Closes menu on click
               className="relative block p-3 md:inline group"
             >
               <span className="relative z-10">{item.label}</span>
@@ -53,7 +61,10 @@ export function Navbar() {
 
           {/* Book Appointment Button */}
           <Link href="/book-appointment" className="block md:inline">
-            <Button className="bg-blue-600 hover:bg-blue-700 text-white mx-16 px-12 py-2 rounded-lg w-full md:w-auto">
+            <Button
+              onClick={() => setIsOpen(false)} // Closes menu on click
+              className="bg-blue-600 hover:bg-blue-700 text-white mx-16 px-12 py-2 rounded-lg w-full md:w-auto"
+            >
               Book Appointment
             </Button>
           </Link>
